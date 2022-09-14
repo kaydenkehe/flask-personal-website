@@ -20,7 +20,7 @@ actual_pwds = ['8858d100607b689dd1afa0c4a92448cf819ed6c4144805da48e5d93f995d0608
 # Create instance of Flask class
 app = Flask(__name__)
 # Secret key helps protect cookies from being edited by user
-app.config['SECRET_KEY'] = 'YOU DONT GET TO KNOW HANNAH'
+app.config['SECRET_KEY'] = 'your key here lol'
 
 # Colors used in website [Background, Background 2, Main Color, Main Highlighted]
 colors = []
