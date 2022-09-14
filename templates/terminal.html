@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='UTF-8'>
+        <title>Terminal</title>
+        <link rel='shortcut icon' href="{{ url_for('static', filename='favicon.ico') }}">
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var scrollDiv = document.getElementById('in-out_div')
+                scrollDiv.scrollTop = scrollDiv.scrollHeight;
+            }, false);
+        </script>
+        <style>
+            body {
+                background-color: {{ colors[0] }};
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-top: 20px;
+            }
+
+            #in-out_div {
+                width: 848px;
+                height: 400px;
+                border: 4px solid {{ colors[2] }};
+                border-radius: 5px;
+                margin: 20px;
+                background-color: {{ colors[1] }};
+                display: flex;
+                flex-direction: column;
+                overflow-y: auto;
+                overflow-x: auto;
+                padding: 10px;
+            }
+
+            input[type=submit] {
+                width: 50px;
+                height: 50px;
+                background-color: {{ colors[2] }};
+                color: {{ colors[0] }};
+                border: 4px solid {{ colors[2] }};
+                border-radius: 5px;
+                transition: all 0.25s;
+                font-family: Calibri;
+                font-size: 30px;
+                margin-left: 20px;
+            }
+
+            input[type=text] {
+                width: 725px;
+                height: 40px;
+                background-color: {{ colors[1] }};
+                color: {{ colors[2] }};
+                border: 4px solid {{ colors[2] }};
+                border-radius: 5px;
+                transition: all 0.25s;
+                font-family: Calibri;
+                font-size: 30px;
+                outline: none;
+            }
+
+            #home_button {
+                background-image: url("{{ url_for('static', filename='home_icon.png') }}");
+                background-size: cover;
+                
+            }
+
+            input[type=submit]:hover {
+                transform: scale(1.02);
+                background-color: {{ colors[3] }};
+                border-color: {{ colors[3] }};
+            }
+
+            input[type=text]:hover {
+                transform: scale(1.02);
+                border-color: {{ colors[3] }};
+                color: {{ colors[3] }};
+            }
+
+            p, h1 {
+                font-size: 15px;
+                font-family: Calibri;
+                color: {{ colors[2] }};
+                margin: 0px;
+                user-select: none;
+                white-space: pre;
+            }
+
+            #bottom_div {
+                display: flex;
+                flex-direction: row;
+            }
+
+            #inputs {
+                color: {{ colors[3] }}
+            }
+
+            #title {
+                font-size: 30px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 id='title'>Raspberry Pi <em>"Terminal"</em></h1>
+        <div id='in-out_div'>
+            {% for i in range(dict_length) %}
+                <div id='sub_in-out_div'>
+                    <p id='inputs'>{{ inputs[i] }}</p>
+                    <p>{{ outputs[i] }}</p>
+                </div>
+            {% endfor %}
+        </div>
+        <form id='bottom_div' method='POST'>
+            <input type=text autocomplete='off' name='command_input'>
+            <input type=submit name='submit_button' value='>'>
+            <input type=submit value='' name='submit_button' id='home_button'>
+        </form>
+    </body>
+</html>

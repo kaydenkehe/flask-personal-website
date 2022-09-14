@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='UTF-8'>
+        <title>Home</title>
+        <link rel='shortcut icon' href="{{ url_for('static', filename='favicon.ico') }}">
+        <style>
+            body {
+                background-color: {{ colors[0] }};
+            }
+
+            input[type=button] {
+                font-size: 40px;
+                margin-top: 40px;
+                width: 600px;
+                height: 100px;
+                background-color: {{ colors[0] }};
+                color: {{ colors[2] }};
+                border-radius: 20px;
+                border: 5px solid {{ colors[2] }};
+                font-family: Calibri;
+                transition: all 0.25s;
+            }
+
+            input[type=button]:hover {
+                border-color: {{ colors[3] }};
+                color: {{ colors[3] }};
+                transform: scale(1.02);
+            }
+
+            div {
+                margin-left: 65px;
+                line-height: 30px;
+                align-items: center;
+                display: flex;
+                flex-direction: column;
+            }
+
+            input[name='settings'] {
+                font-size: 70px;
+                margin-top: 10px;
+                margin-right: 10px;
+                width: 60px;
+                height: 60px;
+                background-color: {{ colors[0] }};
+                color: {{ colors[2] }};
+                border-radius: 50%;
+                border: 5px solid {{ colors[2] }};
+                font-family: Calibri;
+                float: right;
+                line-height: 0px;
+                transition: all 0.25s;
+            }
+
+            input[name='settings']:hover {
+                transform: rotate(-180deg);
+            }
+        </style>
+    </head>
+    <body>
+        <a href=settings><input type=button name='settings' value='/'></a>
+        <div>
+            <a href=nas><input type='button' name='nas' value='NAS'></a>
+            <a href=proxy><input type='button' name='proxy' value='Proxy'></a>
+            <a href=games><input type='button' name='games' value='Games'></a>
+            <a href=terminal><input type='button' name='ssh' value='Terminal'></a>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset='UTF-8'>
+        <title>Login</title>
+        <link rel='shortcut icon' href="{{ url_for('static', filename='favicon.ico') }}">
+        <style>
+            body {
+                background-color: {{ colors[0] }};
+            }
+
+            input[type=password] {
+                font-size: 35px;
+                color: #FFFFFF;
+                height: 75px;
+                width: 700px;
+                margin-top: 5px;
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                border-bottom: 4px solid {{ colors[2] }};
+                outline: none;
+                transition: all 0.25s;
+            }
+
+            input[type=password]:focus {
+                border-bottom: 6px solid {{ colors[3] }};
+                transform: scale(1.02);
+            }
+
+            label {
+                font-size: 20px;
+                color: #BBBBBB;
+                font-family: Calibri;
+                text-align: left;
+                user-select: none;
+                margin-right: 615px;
+                white-space: nowrap;
+            }
+
+            input[type=submit] {
+                font-size: 23px;
+                margin-top: 50px;
+                width: 375px;
+                height: 60px;
+                background-color: {{ colors[2] }};
+                color: {{ colors[0] }};
+                border: none;
+                border-radius: 30px;
+                font-family: Calibri;
+                transition: all 0.25s;
+            }
+
+            input[type=submit]:hover {
+                background-color: {{ colors[3] }};
+                transform: scale(1.02);
+            }
+
+            form {
+                line-height: 40px;
+                align-items: center;
+                display: flex;
+                flex-direction: column;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <form method='POST'>
+                <input type='password' name='pwd1'>
+                <label>Password 1</label>
+                <input type='password' name='pwd2'>
+                <label>Password 2</label>
+                <input type='password' name='pwd3'>
+                <label>Password 3</label>
+                <input type='submit', value='Submit'>
+            </form>
+        </div>
+    </body>
+</html>

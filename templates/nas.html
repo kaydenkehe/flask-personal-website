@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='UTF-8'>
+        <title>NAS</title>
+        <link rel='shortcut icon' href="{{ url_for('static', filename='favicon.ico') }}">
+        <style>
+            body {
+                background-color: {{ colors[0] }};
+            }
+
+            input[type=submit], input[type=text], input[type=button] {
+                background-color: {{ colors[2] }};
+                color: {{ colors[0] }};
+                border-radius: 5px;
+                border: 4px solid {{ colors[2] }};
+                font-family: Calibri;
+                transition: all 0.25s;
+            }
+
+            #main_div {
+                width: 900px;
+                height: 100%;
+                margin: 0 auto;
+                margin-top: 50px;
+            }
+
+            #files_div {
+                background-color: {{ colors[1] }};
+                border: 4px solid {{ colors[2] }};
+                border-radius: 10px;
+                width: 900px;
+                height: 400px;
+                margin: 0 auto;
+                display: flex;
+                flex-direction: column;
+                overflow-y: auto;
+                padding-bottom: 20px;
+            }
+
+            input[value='<'] {
+                font-size: 30px;
+                width: 50px;
+                height: 50px;
+                margin-bottom: 20px;
+                text-align: middle;
+            }
+
+            #home_button {
+                background-image: url("{{ url_for('static', filename='home_icon.png') }}");
+                background-size: cover;
+                font-size: 30px;
+                width: 52px;
+                height: 52px;
+                margin-bottom: -14px;
+                margin-left: 20px;
+                text-align: middle;
+            }
+
+            #filepath, #directory_input {
+                background-color: {{ colors[1] }};
+                color: {{ colors[2] }};
+                font-size: 30px;
+                margin-left: 20px;
+                margin-bottom: 20px;
+                width: 700px;
+                height: 44px;
+                padding-left: 5px;
+                padding-right: 5px;
+                text-align: left;
+                user-select: none;
+                outline: none;
+                text-overflow: ellipsis;
+            }
+
+            #file_button {
+                margin-top: 20px;
+                margin-left: 5px;
+                margin-right: 20px;
+                height: 50px;
+                width: 810px;
+                min-height: 50px;
+                font-size: 25px;
+                text-align: left;
+            }
+
+            #file_button:hover {
+                font-size: 30px;
+                background-color: {{ colors[3] }};
+                border-color: {{ colors[3] }};
+            }
+
+            img {
+                width: 40px;
+                height: 40px;
+                border: 5px solid {{ colors[2] }};
+                background-color: {{ colors[2] }};
+                border-radius: 5px;
+                margin-left: 20px;
+                margin-top: 20px;
+            }
+
+            #sub_files_div {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            #directory_input, #create_directory, #download_directory, #choose_file, #upload {
+                font-size: 20px;
+                float: left;
+                margin-top: 20px;
+                margin-right: 20px;
+                height: 40px;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+
+            #directory_input {
+                width: 200px;
+                margin-left: 0px;
+                height: 30px;
+            }
+
+            #create_directory:hover, #download_directory:hover, #choose_file:hover, #upload:hover, input[value='<']:hover, #home_button:hover {
+                transform: scale(1.02);
+                background-color: {{ colors[3] }};
+                border-color: {{ colors[3] }};
+            }
+
+            #directory_input:hover {
+                transform: scale(1.02);
+                border-color: {{ colors[3] }};
+                color: {{ colors[3] }};
+            }
+        </style>
+    </head>
+    <body>
+        <div id='main_div'>
+            <form method='POST' enctype='multipart/form-data'>
+                <input type=submit value='<', name='submit_button'>
+                <input type=text readonly value='{{ filepath }}' id='filepath'>
+                <input type=submit value='' name=submit_button id='home_button'>
+                <div id='files_div'>
+                    {% for i in range(files_len) %}
+                        <div id='sub_files_div'>
+                            <img src="{{ url_for('static', filename=icon_file_names[i]) }}">
+                            <input type=submit value='{{ files[i] }}', name='submit_button' id='file_button'>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div id='bottom_row'>
+                    <input type=button onclick="document.getElementById('get_file').click()" value='Choose File' id='choose_file'>
+                    <input type=file id='get_file' style='display: none;' name='file_upload'>
+                    <input type=submit value='Upload' name='submit_button' id='upload'>
+                    <input type=text autocomplete='off' name='dir_name_input' placeholder='Directory Name' id='directory_input'>
+                    <input type=submit value='Create Directory' name='submit_button' id='create_directory'>
+                    <input type=submit value='Download Directory' name='submit_button' id='download_directory'>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

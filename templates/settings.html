@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset='UTF-8'>
+        <title>Settings</title>
+        <link rel='shortcut icon' href="{{ url_for('static', filename='favicon.ico') }}">
+        <style>
+            body {
+                background-color: {{ colors[0] }};
+            }
+
+            #circle0 {
+                width: 60px;
+                height: 60px;
+                background-color: {{ colors[0] }};
+                border: 4px solid #FFFFFF;
+                border-radius: 50%;
+                margin-right: 20px;
+            }
+
+            #circle1 {
+                width: 60px;
+                height: 60px;
+                background-color: {{ colors[1] }};
+                border: 4px solid #FFFFFF;
+                border-radius: 50%;
+                margin-right: 20px;
+            }
+
+            #circle2 {
+                width: 60px;
+                height: 60px;
+                background-color: {{ colors[2] }};
+                border: 4px solid #FFFFFF;
+                border-radius: 50%;
+                margin-right: 20px;
+            }
+
+            #circle3 {
+                width: 60px;
+                height: 60px;
+                background-color: {{ colors[3] }};
+                border: 4px solid #FFFFFF;
+                border-radius: 50%;
+                margin-right: 20px;
+            }
+
+            input[type=text] {
+                font-size: 20px;
+                background-color: {{ colors[1] }};
+                color: {{ colors[2] }};
+                outline: none;
+                border: 4px solid {{ colors[2] }};
+                border-radius: 5px;
+                height: 40px;
+                width: 600px;
+                padding-left: 5px;
+                transition: all 0.25s;
+            }
+
+            input[type=text]:hover {
+                transform: scale(1.02);
+                border-color: {{ colors[3] }};
+                color: {{ colors[3] }};
+            }
+
+            form {
+                align-items: center;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .color_div {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding-top: 40px;
+            }
+
+            #color_submit {
+                background-color: {{ colors[2] }};
+                color: {{ colors[0] }};
+                border-radius: 5px;
+                border: 4px solid {{ colors[2] }};
+                font-family: Calibri;
+                width: 150px;
+                height: 50px;
+                margin-left: 20px;
+                text-align: middle;
+                font-size: 30px;
+                transition: all 0.25s;
+            }
+
+            #home_button {
+                background-image: url("{{ url_for('static', filename='home_icon.png') }}");
+                background-size: cover;
+                background-color: {{ colors[2] }};
+                color: {{ colors[0] }};
+                border-radius: 5px;
+                border: 4px solid {{ colors[2] }};
+                font-family: Calibri;
+                width: 50px;
+                height: 50px;
+                margin-left: 20px;
+                text-align: middle;
+                font-size: 30px;
+                transition: all 0.25s;
+            }
+
+            #home_button:hover, #color_submit:hover {
+                transform: scale(1.02);
+                border-color: {{ colors[3] }};
+                background-color: {{ colors[3] }};
+            }
+
+            #submit_div {
+                padding: 40px;
+                display: flex;
+                flex-direction: row;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <form method='POST'>
+                <div class='color_div'>
+                    <div id='circle0'></div>
+                    <input type=text autocomplete='off' name='color0' value='{{ colors[0] }}'>
+                </div>
+                <div class='color_div'>
+                    <div id='circle1'></div>
+                    <input type=text autocomplete='off' name='color1' value='{{ colors[1] }}'>
+                </div>
+                <div class='color_div'>
+                    <div id='circle2'></div>
+                    <input type=text autocomplete='off' name='color2' value='{{ colors[2] }}'>
+                </div>
+                <div class='color_div'>
+                    <div id='circle3'></div>
+                    <input type=text autocomplete='off' name='color3' value='{{ colors[3] }}'>
+                </div>
+                <div id='submit_div'>
+                    <input type=submit name='submit_button' value='Submit' id='color_submit'>
+                    <input type=submit name='submit_button' value='' id='home_button'>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
